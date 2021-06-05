@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>佛性的个人站</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2021-06-05T16:25:40.500Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>foxing</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图片测试</title>
+    <link href="http://example.com/2021/06/06/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/"/>
+    <id>http://example.com/2021/06/06/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/</id>
+    <published>2021-06-05T16:15:39.000Z</published>
+    <updated>2021-06-05T16:25:40.500Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="just-for-test"><a href="#just-for-test" class="headerlink" title="just for test"></a>just for test</h1><p><img src="/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95%5Cv2-52220b2dba6901ee2181b72951d25a7b_1440w.jpg" alt="img"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;just-for-test&quot;&gt;&lt;a href=&quot;#just-for-test&quot; class=&quot;headerlink&quot; title=&quot;just for test&quot;&gt;&lt;/a&gt;just for test&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/%E5%9B%BE%E7%89</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
