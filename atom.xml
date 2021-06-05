@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-06-05T16:33:10.125Z</updated>
+  <updated>2021-06-05T17:05:32.657Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,18 +17,18 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>图片测试</title>
+    <title>博客搭建过程</title>
     <link href="http://example.com/2021/06/06/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/"/>
     <id>http://example.com/2021/06/06/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/</id>
     <published>2021-06-05T16:15:39.000Z</published>
-    <updated>2021-06-05T16:33:10.125Z</updated>
+    <updated>2021-06-05T17:05:32.657Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="just-for-test"><a href="#just-for-test" class="headerlink" title="just for test"></a>just for test</h1><p><img src="/2021/06/06/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/v2-52220b2dba6901ee2181b72951d25a7b_1440w.jpg" alt="img"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Hexo-Github博客搭建过程"><a href="#Hexo-Github博客搭建过程" class="headerlink" title="Hexo+Github博客搭建过程"></a>Hexo+Github博客搭建过程</h1><h2 id="博客搭建"><a href="#博客搭建" class="headerlink" title="博客搭建"></a>博客搭建</h2><p>采用了HEXO加GITHUB的形式，毕竟这种方式便宜，稳定</p><p>主要参考的教程：<a href="https://dong-666.github.io/2020/07/01/Hexo/">传送门</a></p><p>主题优化采用了buttlfly</p><h2 id="优雅的编辑"><a href="#优雅的编辑" class="headerlink" title="优雅的编辑"></a>优雅的编辑</h2><p>使用Typora来优雅的插入我们所需要图片</p><p>主要参考的教程：<a href="https://zhuanlan.zhihu.com/p/265077468">传送门</a></p><p>请注意最后HEXO需要保留的图像链接格式是这样的：</p><p><img src="/2021/06/06/%E5%9B%BE%E7%89%87%E6%B5%8B%E8%AF%95/image-20210606010258674.png" alt="image-20210606010258674"></p><p>不需要任何的文件目录，hexo会自己去资源文件夹中查找</p><h2 id="巧妙的上传"><a href="#巧妙的上传" class="headerlink" title="巧妙的上传"></a>巧妙的上传</h2><p>1.生成新的博客</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo <span class="keyword">new</span> <span class="string">&quot;博客名字&quot;</span></span><br></pre></td></tr></table></figure><p>2.hexo生成静态页面</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br></pre></td></tr></table></figure><p>3.部署到github</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure><p>暂时就想到这么多，有多的再说</p>]]></content>
     
     
       
       
-    <summary type="html">&lt;h1 id=&quot;just-for-test&quot;&gt;&lt;a href=&quot;#just-for-test&quot; class=&quot;headerlink&quot; title=&quot;just for test&quot;&gt;&lt;/a&gt;just for test&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/2021/06/06/%E5%</summary>
+    <summary type="html">&lt;h1 id=&quot;Hexo-Github博客搭建过程&quot;&gt;&lt;a href=&quot;#Hexo-Github博客搭建过程&quot; class=&quot;headerlink&quot; title=&quot;Hexo+Github博客搭建过程&quot;&gt;&lt;/a&gt;Hexo+Github博客搭建过程&lt;/h1&gt;&lt;h2 id=&quot;博客搭建&quot;</summary>
       
     
     
