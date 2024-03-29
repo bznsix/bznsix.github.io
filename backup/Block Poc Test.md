@@ -1,2 +1,1 @@
-here is a test 
-![image](https://github.com/bznsix/bznsix.github.io/assets/38829902/8d735501-a299-45d0-abd9-2648d6e45b1b)
+新搭建了个博客，感觉挺不错的，以后可能会在这写些复现POC的时候学到的知识。
