@@ -29,7 +29,7 @@ contract My{
 }`
 这个合约发布成功后，check_gas_price的功能会检查只有当你的gasprice为1时才增加a,而check_validitor则是只有验证者为bnb48_club才增加a
 让我们来验证结果：
-当验证者为：Validator: Avengers 时，合约功能执行失败。 [这个原因是因为BNB48并不会自己打包所有的交易，他也会把交易给他信任的合作伙伴。在gitbook里面也有所提到：](https://docs.48.club/buidl/infrastructure/bsc-rpc/front-run-protection)
+当验证者为：Validator: Avengers 时，合约功能执行失败。为什么使用BNB48的RPC却会出现不同的验证者呢？这个原因是因为BNB48并不会自己打包所有的交易，他也会把交易给他信任的合作伙伴。在gitbook里面也有所提到：[gitbook](https://docs.48.club/buidl/infrastructure/bsc-rpc/front-run-protection)
 ![image](https://github.com/bznsix/bznsix.github.io/assets/38829902/f12e7651-7834-478b-ad00-c6513a5062d8)
 当验证者为：Validator: 48 Club 时，合约功能执行成功。
 ![image](https://github.com/bznsix/bznsix.github.io/assets/38829902/5c102c38-38fe-4258-b172-50b09e3de0ab)
