@@ -17,4 +17,6 @@ mosdns是一个不错的Dns转发插件，可以很方便的配置转发DNS查�
 附上一些链接：luci-app-mosdns[安装链接](https://github.com/IrineSistiana/mosdns/discussions/455)
 我的路由器只有38M可用空间了，脚本检查要40M，修改下变量也能装。
 
+PS:还是启用下crash的dns劫持比较好，不然域名分流规则会失效
+
 
