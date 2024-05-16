@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>佛性</title><link>https://bznsix.github.io</link><description>想办法干他一笔大的！</description><copyright>佛性</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img2.imgtp.com/2024/04/11/AhM7uVjT.png</url><title>avatar</title><link>https://bznsix.github.io</link></image><lastBuildDate>Thu, 16 May 2024 06:13:06 +0000</lastBuildDate><managingEditor>佛性</managingEditor><ttl>60</ttl><webMaster>佛性</webMaster><item><title>OpennetworkLinux编译</title><link>https://bznsix.github.io/post/OpennetworkLinux-bian-yi.html</link><description>最近想升级ONL到10，但是ONL这个项目很久没有人维护了遇到了一些问题，这里记录下解决方案&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>佛性</title><link>https://bznsix.github.io</link><description>想办法干他一笔大的！</description><copyright>佛性</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img2.imgtp.com/2024/04/11/AhM7uVjT.png</url><title>avatar</title><link>https://bznsix.github.io</link></image><lastBuildDate>Thu, 16 May 2024 07:04:50 +0000</lastBuildDate><managingEditor>佛性</managingEditor><ttl>60</ttl><webMaster>佛性</webMaster><item><title>OpennetworkLinux编译</title><link>https://bznsix.github.io/post/OpennetworkLinux-bian-yi.html</link><description>最近想升级ONL到10，但是ONL这个项目很久没有人维护了遇到了一些问题，这里记录下解决方案&#13;
 常规的构建流程：&#13;
 ```&#13;
 #&gt; git clone https://github.com/opencomputeproject/OpenNetworkLinux&#13;
@@ -12,8 +12,10 @@
 但是在执行apt-cacher-ng的时候会出现报错，如果在容器中直接apt-install apt-cacher-ng 也会出现dns解析出现错误的问题，而设置这个包缓存器又是编译过程的第一步（没仔细看是否会在后续过程中更改apt源等）所以这就带来了一系列问题，如果不执行这个指令会出现后续的一系列包安装失败，所以这个东西还挺重要，下面直接给出解决方案：&#13;
 &#13;
 1. 直接下载apt-cacher-ng.deb  wget http://ftp.de.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_3.2.1-1_amd64.deb&#13;
-2. dpkg -i 加名字，在弹出来的框是否运行http选择yes&#13;
-3. 继续正常的步骤&#13;
+2. sudo dpkg -i 加名字，在弹出来的框是否运行http选择yes&#13;
+3. 修改运行apt-cacher-ng的权限sudo chown foxing:foxing  /run/apt-cacher-ng/&#13;
+4. 手动执行apt-cacher-ng&#13;
+5. 继续正常的步骤&#13;
 &#13;
 注意上述的所有步骤都是在编译ONL的docker中进行的，而不是宿主机&#13;
 &#13;
