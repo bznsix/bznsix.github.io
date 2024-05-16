@@ -1,5 +1,30 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>佛性</title><link>https://bznsix.github.io</link><description>想办法干他一笔大的！</description><copyright>佛性</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img2.imgtp.com/2024/04/11/AhM7uVjT.png</url><title>avatar</title><link>https://bznsix.github.io</link></image><lastBuildDate>Wed, 08 May 2024 08:16:47 +0000</lastBuildDate><managingEditor>佛性</managingEditor><ttl>60</ttl><webMaster>佛性</webMaster><item><title>MosDns分流和防泄露设置</title><link>https://bznsix.github.io/post/MosDns-fen-liu-he-fang-xie-lu-she-zhi.html</link><description>mosdns是一个不错的Dns转发插件，可以很方便的配置转发DNS查询的规则。</description><guid isPermaLink="true">https://bznsix.github.io/post/MosDns-fen-liu-he-fang-xie-lu-she-zhi.html</guid><pubDate>Wed, 08 May 2024 08:16:14 +0000</pubDate></item><item><title>supervisor介绍</title><link>https://bznsix.github.io/post/supervisor-jie-shao.html</link><description>supervisor是一个用于控制程序后台启动的脚本，拿python写的挺亲切的。</description><guid isPermaLink="true">https://bznsix.github.io/post/supervisor-jie-shao.html</guid><pubDate>Mon, 06 May 2024 02:59:34 +0000</pubDate></item><item><title>1inch的unoswap简单介绍</title><link>https://bznsix.github.io/post/1inch-de-unoswap-jian-dan-jie-shao.html</link><description>昨天一个攻击引起了我的注意，交易[TX](https://app.blocksec.com/explorer/tx/bsc/0x49ca5e188c538b4f2efb45552f13309cc0dd1f3592eee54decfc9da54620c2ec)&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>佛性</title><link>https://bznsix.github.io</link><description>想办法干他一笔大的！</description><copyright>佛性</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img2.imgtp.com/2024/04/11/AhM7uVjT.png</url><title>avatar</title><link>https://bznsix.github.io</link></image><lastBuildDate>Thu, 16 May 2024 06:13:06 +0000</lastBuildDate><managingEditor>佛性</managingEditor><ttl>60</ttl><webMaster>佛性</webMaster><item><title>OpennetworkLinux编译</title><link>https://bznsix.github.io/post/OpennetworkLinux-bian-yi.html</link><description>最近想升级ONL到10，但是ONL这个项目很久没有人维护了遇到了一些问题，这里记录下解决方案&#13;
+常规的构建流程：&#13;
+```&#13;
+#&gt; git clone https://github.com/opencomputeproject/OpenNetworkLinux&#13;
+#&gt; cd OpenNetworkLinux&#13;
+#&gt; docker/tools/onlbuilder -10             # enter the docker workspace&#13;
+#&gt; apt-cacher-ng&#13;
+#&gt; source setup.env                         # pull in necessary environment variables&#13;
+#&gt; make amd64                          # make onl for $platform (currently amd64)&#13;
+```&#13;
+但是在执行apt-cacher-ng的时候会出现报错，如果在容器中直接apt-install apt-cacher-ng 也会出现dns解析出现错误的问题，而设置这个包缓存器又是编译过程的第一步（没仔细看是否会在后续过程中更改apt源等）所以这就带来了一系列问题，如果不执行这个指令会出现后续的一系列包安装失败，所以这个东西还挺重要，下面直接给出解决方案：&#13;
+&#13;
+1. 直接下载apt-cacher-ng.deb  wget http://ftp.de.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_3.2.1-1_amd64.deb&#13;
+2. dpkg -i 加名字，在弹出来的框是否运行http选择yes&#13;
+3. 继续正常的步骤&#13;
+&#13;
+注意上述的所有步骤都是在编译ONL的docker中进行的，而不是宿主机&#13;
+&#13;
+没大问题的话是可以正常走完的&#13;
+&#13;
+[参考资料](https://groups.google.com/g/opennetworklinux/c/K3Dtt7uWjyk/m/IBkKDZxEAwAJ?pli=1)&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+。</description><guid isPermaLink="true">https://bznsix.github.io/post/OpennetworkLinux-bian-yi.html</guid><pubDate>Thu, 16 May 2024 06:12:23 +0000</pubDate></item><item><title>MosDns分流和防泄露设置</title><link>https://bznsix.github.io/post/MosDns-fen-liu-he-fang-xie-lu-she-zhi.html</link><description>mosdns是一个不错的Dns转发插件，可以很方便的配置转发DNS查询的规则。</description><guid isPermaLink="true">https://bznsix.github.io/post/MosDns-fen-liu-he-fang-xie-lu-she-zhi.html</guid><pubDate>Wed, 08 May 2024 08:16:14 +0000</pubDate></item><item><title>supervisor介绍</title><link>https://bznsix.github.io/post/supervisor-jie-shao.html</link><description>supervisor是一个用于控制程序后台启动的脚本，拿python写的挺亲切的。</description><guid isPermaLink="true">https://bznsix.github.io/post/supervisor-jie-shao.html</guid><pubDate>Mon, 06 May 2024 02:59:34 +0000</pubDate></item><item><title>1inch的unoswap简单介绍</title><link>https://bznsix.github.io/post/1inch-de-unoswap-jian-dan-jie-shao.html</link><description>昨天一个攻击引起了我的注意，交易[TX](https://app.blocksec.com/explorer/tx/bsc/0x49ca5e188c538b4f2efb45552f13309cc0dd1f3592eee54decfc9da54620c2ec)&#13;
 ,本质原因是未经认证的输入，可以导致用户的输入calldata被合约执行，这很常见了。</description><guid isPermaLink="true">https://bznsix.github.io/post/1inch-de-unoswap-jian-dan-jie-shao.html</guid><pubDate>Thu, 25 Apr 2024 06:17:55 +0000</pubDate></item><item><title>在区块链上使用确定的gas price和validitor进行交易</title><link>https://bznsix.github.io/post/zai-qu-kuai-lian-shang-shi-yong-que-ding-de-gas%20price-he-validitor-jin-xing-jiao-yi.html</link><description>为什么要提到这点呢，因为区块链上如果进了公共的pool的话你的交易就很容易被夹，特别是你这个交易还能产生利润的话，所以我们希望交易具有确定性。</description><guid isPermaLink="true">https://bznsix.github.io/post/zai-qu-kuai-lian-shang-shi-yong-que-ding-de-gas%20price-he-validitor-jin-xing-jiao-yi.html</guid><pubDate>Fri, 12 Apr 2024 08:03:54 +0000</pubDate></item><item><title>Solidity rawdata的简单介绍</title><link>https://bznsix.github.io/post/Solidity%20rawdata-de-jian-dan-jie-shao.html</link><description># Solidity rawdata的介绍&#13;
 &#13;
 在Solidity中，函数的调用其实都是通过rawdata来实现的，在与合约交互的过程中，传入一串inputdata，在这个inputdata中就包含了所需要的一切信息，包过需要调用的函数名字，携带进入的参数等。</description><guid isPermaLink="true">https://bznsix.github.io/post/Solidity%20rawdata-de-jian-dan-jie-shao.html</guid><pubDate>Thu, 11 Apr 2024 08:51:53 +0000</pubDate></item><item><title>Block Poc Test</title><link>https://bznsix.github.io/post/Block%20Poc%20Test.html</link><description>新搭建了个博客，感觉挺不错的，以后可能会在这写些复现POC的时候学到的知识。</description><guid isPermaLink="true">https://bznsix.github.io/post/Block%20Poc%20Test.html</guid><pubDate>Fri, 29 Mar 2024 03:17:21 +0000</pubDate></item></channel></rss>
