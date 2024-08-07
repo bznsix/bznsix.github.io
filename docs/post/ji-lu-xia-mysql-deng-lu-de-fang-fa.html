@@ -15,14 +15,44 @@
 1. docker exec -it 9b /bin/bash
 2. mysql -u root -p  密码123456
 3. USE CONTRACT;  选择数据库
-4. SHOW TABLES;  选择表项。">
+4. SHOW TABLES;  选择表项
+
+对表进行去重的方法：
+-- 1. 创建临时表以存储每个 address 的最小 id
+CREATE TEMPORARY TABLE temp_table AS
+SELECT MIN(id) AS id
+FROM contract_address
+GROUP BY address;
+
+-- 2. 删除重复记录，保留在临时表中的记录
+DELETE FROM contract_address
+WHERE id NOT IN (SELECT id FROM temp_table);
+
+-- 3. 删除临时表
+DROP TEMPORARY TABLE temp_table;
+。">
 <meta property="og:title" content="记录下mysql登录的方法">
 <meta property="og:description" content="Docker的mysql
 
 1. docker exec -it 9b /bin/bash
 2. mysql -u root -p  密码123456
 3. USE CONTRACT;  选择数据库
-4. SHOW TABLES;  选择表项。">
+4. SHOW TABLES;  选择表项
+
+对表进行去重的方法：
+-- 1. 创建临时表以存储每个 address 的最小 id
+CREATE TEMPORARY TABLE temp_table AS
+SELECT MIN(id) AS id
+FROM contract_address
+GROUP BY address;
+
+-- 2. 删除重复记录，保留在临时表中的记录
+DELETE FROM contract_address
+WHERE id NOT IN (SELECT id FROM temp_table);
+
+-- 3. 删除临时表
+DROP TEMPORARY TABLE temp_table;
+。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bznsix.github.io/post/ji-lu-xia-mysql-deng-lu-de-fang-fa.html">
 <meta property="og:image" content="https://img2.imgtp.com/2024/04/11/AhM7uVjT.png">
@@ -88,7 +118,18 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li>mysql -u root -p  密码123456</li>
 <li>USE CONTRACT;  选择数据库</li>
 <li>SHOW TABLES;  选择表项</li>
-</ol></div>
+</ol>
+<p>对表进行去重的方法：<br>
+-- 1. 创建临时表以存储每个 address 的最小 id<br>
+CREATE TEMPORARY TABLE temp_table AS<br>
+SELECT MIN(id) AS id<br>
+FROM contract_address<br>
+GROUP BY address;</p>
+<p>-- 2. 删除重复记录，保留在临时表中的记录<br>
+DELETE FROM contract_address<br>
+WHERE id NOT IN (SELECT id FROM temp_table);</p>
+<p>-- 3. 删除临时表<br>
+DROP TEMPORARY TABLE temp_table;</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

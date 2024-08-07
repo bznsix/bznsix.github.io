@@ -1,10 +1,25 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>佛性</title><link>https://bznsix.github.io</link><description>想办法干他一笔大的！</description><copyright>佛性</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img2.imgtp.com/2024/04/11/AhM7uVjT.png</url><title>avatar</title><link>https://bznsix.github.io</link></image><lastBuildDate>Wed, 07 Aug 2024 07:08:13 +0000</lastBuildDate><managingEditor>佛性</managingEditor><ttl>60</ttl><webMaster>佛性</webMaster><item><title>记录下mysql登录的方法</title><link>https://bznsix.github.io/post/ji-lu-xia-mysql-deng-lu-de-fang-fa.html</link><description>Docker的mysql&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>佛性</title><link>https://bznsix.github.io</link><description>想办法干他一笔大的！</description><copyright>佛性</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img2.imgtp.com/2024/04/11/AhM7uVjT.png</url><title>avatar</title><link>https://bznsix.github.io</link></image><lastBuildDate>Wed, 07 Aug 2024 08:08:33 +0000</lastBuildDate><managingEditor>佛性</managingEditor><ttl>60</ttl><webMaster>佛性</webMaster><item><title>记录下mysql登录的方法</title><link>https://bznsix.github.io/post/ji-lu-xia-mysql-deng-lu-de-fang-fa.html</link><description>Docker的mysql&#13;
 &#13;
 1. docker exec -it 9b /bin/bash&#13;
 2. mysql -u root -p  密码123456&#13;
 3. USE CONTRACT;  选择数据库&#13;
-4. SHOW TABLES;  选择表项。</description><guid isPermaLink="true">https://bznsix.github.io/post/ji-lu-xia-mysql-deng-lu-de-fang-fa.html</guid><pubDate>Wed, 07 Aug 2024 07:07:50 +0000</pubDate></item><item><title>打造自己的看番环境</title><link>https://bznsix.github.io/post/da-zao-zi-ji-de-kan-fan-huan-jing.html</link><description>由于当前的B站特色，很多番剧先审后播，时效性有所下降，所以考虑在本地搭建一套自己的看番环境，本次主要使用的工具有qbittorrent和jellyfin。</description><guid isPermaLink="true">https://bznsix.github.io/post/da-zao-zi-ji-de-kan-fan-huan-jing.html</guid><pubDate>Sun, 09 Jun 2024 01:46:08 +0000</pubDate></item><item><title>Awtrix2升级Awtrix3</title><link>https://bznsix.github.io/post/Awtrix2-sheng-ji-Awtrix3.html</link><description>原来就一直有个像素灯，之前是通过上位机和下位机通信控制的，但是上次打开控制网页的时候出现了当前版本已经停止支持的选项，遂上github查看发现从ESP8266重构到了ESP32，不需要上位机控制了。</description><guid isPermaLink="true">https://bznsix.github.io/post/Awtrix2-sheng-ji-Awtrix3.html</guid><pubDate>Sun, 26 May 2024 09:27:59 +0000</pubDate></item><item><title>OpennetworkLinux启用usbwifi的支持</title><link>https://bznsix.github.io/post/OpennetworkLinux-qi-yong-usbwifi-de-zhi-chi.html</link><description>买了个usbwifi CF-812AC,里面芯片型号应该是88x2bu，这个大把驱动安装教程，但是关键的来了。</description><guid isPermaLink="true">https://bznsix.github.io/post/OpennetworkLinux-qi-yong-usbwifi-de-zhi-chi.html</guid><pubDate>Fri, 17 May 2024 08:39:36 +0000</pubDate></item><item><title>OpennetworkLinux编译</title><link>https://bznsix.github.io/post/OpennetworkLinux-bian-yi.html</link><description>最近想升级ONL到10，但是ONL这个项目很久没有人维护了遇到了一些问题，这里记录下解决方案&#13;
+4. SHOW TABLES;  选择表项&#13;
+&#13;
+对表进行去重的方法：&#13;
+-- 1. 创建临时表以存储每个 address 的最小 id&#13;
+CREATE TEMPORARY TABLE temp_table AS&#13;
+SELECT MIN(id) AS id&#13;
+FROM contract_address&#13;
+GROUP BY address;&#13;
+&#13;
+-- 2. 删除重复记录，保留在临时表中的记录&#13;
+DELETE FROM contract_address&#13;
+WHERE id NOT IN (SELECT id FROM temp_table);&#13;
+&#13;
+-- 3. 删除临时表&#13;
+DROP TEMPORARY TABLE temp_table;&#13;
+。</description><guid isPermaLink="true">https://bznsix.github.io/post/ji-lu-xia-mysql-deng-lu-de-fang-fa.html</guid><pubDate>Wed, 07 Aug 2024 07:07:50 +0000</pubDate></item><item><title>打造自己的看番环境</title><link>https://bznsix.github.io/post/da-zao-zi-ji-de-kan-fan-huan-jing.html</link><description>由于当前的B站特色，很多番剧先审后播，时效性有所下降，所以考虑在本地搭建一套自己的看番环境，本次主要使用的工具有qbittorrent和jellyfin。</description><guid isPermaLink="true">https://bznsix.github.io/post/da-zao-zi-ji-de-kan-fan-huan-jing.html</guid><pubDate>Sun, 09 Jun 2024 01:46:08 +0000</pubDate></item><item><title>Awtrix2升级Awtrix3</title><link>https://bznsix.github.io/post/Awtrix2-sheng-ji-Awtrix3.html</link><description>原来就一直有个像素灯，之前是通过上位机和下位机通信控制的，但是上次打开控制网页的时候出现了当前版本已经停止支持的选项，遂上github查看发现从ESP8266重构到了ESP32，不需要上位机控制了。</description><guid isPermaLink="true">https://bznsix.github.io/post/Awtrix2-sheng-ji-Awtrix3.html</guid><pubDate>Sun, 26 May 2024 09:27:59 +0000</pubDate></item><item><title>OpennetworkLinux启用usbwifi的支持</title><link>https://bznsix.github.io/post/OpennetworkLinux-qi-yong-usbwifi-de-zhi-chi.html</link><description>买了个usbwifi CF-812AC,里面芯片型号应该是88x2bu，这个大把驱动安装教程，但是关键的来了。</description><guid isPermaLink="true">https://bznsix.github.io/post/OpennetworkLinux-qi-yong-usbwifi-de-zhi-chi.html</guid><pubDate>Fri, 17 May 2024 08:39:36 +0000</pubDate></item><item><title>OpennetworkLinux编译</title><link>https://bznsix.github.io/post/OpennetworkLinux-bian-yi.html</link><description>最近想升级ONL到10，但是ONL这个项目很久没有人维护了遇到了一些问题，这里记录下解决方案&#13;
 常规的构建流程：&#13;
 ```&#13;
 #&gt; git clone https://github.com/opencomputeproject/OpenNetworkLinux&#13;
