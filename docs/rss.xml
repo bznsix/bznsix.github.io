@@ -1,5 +1,15 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>佛性</title><link>https://bznsix.github.io</link><description>想办法干他一笔大的！</description><copyright>佛性</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img2.imgtp.com/2024/04/11/AhM7uVjT.png</url><title>avatar</title><link>https://bznsix.github.io</link></image><lastBuildDate>Fri, 09 Aug 2024 06:24:08 +0000</lastBuildDate><managingEditor>佛性</managingEditor><ttl>60</ttl><webMaster>佛性</webMaster><item><title>rg进行多行筛选的方法</title><link>https://bznsix.github.io/post/rg-jin-xing-duo-xing-shai-xuan-de-fang-fa.html</link><description>有时候我们不希望仅搜索一个条件，我们希望多个条件结合起来搜索，那么我们就可以巧妙的利用-A选项追加显示，再结合一个rg来进行多重搜索，如下所示：&#13;
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>佛性</title><link>https://bznsix.github.io</link><description>想办法干他一笔大的！</description><copyright>佛性</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img2.imgtp.com/2024/04/11/AhM7uVjT.png</url><title>avatar</title><link>https://bznsix.github.io</link></image><lastBuildDate>Wed, 28 Aug 2024 05:58:50 +0000</lastBuildDate><managingEditor>佛性</managingEditor><ttl>60</ttl><webMaster>佛性</webMaster><item><title>记录下配置ONLYPWNER CTF环境的步骤</title><link>https://bznsix.github.io/post/ji-lu-xia-pei-zhi-ONLYPWNER%20CTF-huan-jing-de-bu-zou.html</link><description>蛮经典的一个CTF，地址[https://onlypwner.xyz/challenges/5](url)&#13;
+这里选择采用Foundry来完成解题，一般来讲，每一关你点击Launch都会生成一个给你的节点，你要攻击的合约地址，以及一个你答题用的私钥地址，如图所示：&#13;
+![image](https://github.com/user-attachments/assets/6853dc5a-ebf2-4fba-9d14-d09b03ac5c3b)&#13;
+这些记下来，我们后面会用到&#13;
+接着我们使用github上一个答题模板来配置，名字叫onlypwner-foundry，可以自行搜索下&#13;
+下载完成后，记得使用git submodule update --progress --init来更新目录lib下的一些foundry脚本合约&#13;
+然后新建.env文件，里面用上了我们上面截图的东西&#13;
+![image](https://github.com/user-attachments/assets/ecce12ab-2b2a-4328-b43b-f844ba38e651)&#13;
+之后再在challenges文件夹下，你对应的关卡里面的script文件夹下创建Solve.sol解题脚本，以第一关为例（这个很简单，就是存粹提款）&#13;
+![image](https://github.com/user-attachments/assets/16ba8954-e363-43a9-8525-2e8f65e15361)&#13;
+这里面会用vm.envxxx去读取我们配置的环境变量，之后我们使用startBroadcast将操纵广播上链。</description><guid isPermaLink="true">https://bznsix.github.io/post/ji-lu-xia-pei-zhi-ONLYPWNER%20CTF-huan-jing-de-bu-zou.html</guid><pubDate>Wed, 28 Aug 2024 05:58:23 +0000</pubDate></item><item><title>rg进行多行筛选的方法</title><link>https://bznsix.github.io/post/rg-jin-xing-duo-xing-shai-xuan-de-fang-fa.html</link><description>有时候我们不希望仅搜索一个条件，我们希望多个条件结合起来搜索，那么我们就可以巧妙的利用-A选项追加显示，再结合一个rg来进行多重搜索，如下所示：&#13;
 `rg 'fromBalance = _balances\[from\];' -A 5  | rg 'toBalance = _balances\[to\];'`&#13;
 -A代表的显示搜查结果及其下五行，之后传给另一个rg。</description><guid isPermaLink="true">https://bznsix.github.io/post/rg-jin-xing-duo-xing-shai-xuan-de-fang-fa.html</guid><pubDate>Fri, 09 Aug 2024 06:23:47 +0000</pubDate></item><item><title>记录下mysql登录的方法</title><link>https://bznsix.github.io/post/ji-lu-xia-mysql-deng-lu-de-fang-fa.html</link><description>Docker的mysql&#13;
 &#13;
