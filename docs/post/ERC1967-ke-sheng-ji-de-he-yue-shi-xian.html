@@ -38,8 +38,9 @@ interface IBeacon {
 bytes32(uint256(keccak256('eip1967.proxy.beacon')) - 1)
 
 有两种代理合约的模板
-1.OpenZeppelin 的透明可升级代理
-2.UUPS 代理实现
+
+- 1.OpenZeppelin 的透明可升级代理
+- 2.UUPS 代理实现
 
 OpenZeppelin和UUPS的设计模式都是不让在代理合约中直接实现更改管理员地址的操作来避免出现函数选择器碰撞，进而来导致实现合约地址或者是管理员地址被错误的更改
 
@@ -77,8 +78,9 @@ interface IBeacon {
 bytes32(uint256(keccak256('eip1967.proxy.beacon')) - 1)
 
 有两种代理合约的模板
-1.OpenZeppelin 的透明可升级代理
-2.UUPS 代理实现
+
+- 1.OpenZeppelin 的透明可升级代理
+- 2.UUPS 代理实现
 
 OpenZeppelin和UUPS的设计模式都是不让在代理合约中直接实现更改管理员地址的操作来避免出现函数选择器碰撞，进而来导致实现合约地址或者是管理员地址被错误的更改
 
@@ -180,9 +182,11 @@ function implementation() external view returns (address);<br>
 <p>更改信标合约的返回值可以很简单的改变所有的代理<br>
 信标插槽0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50<br>
 bytes32(uint256(keccak256('eip1967.proxy.beacon')) - 1)</p>
-<p>有两种代理合约的模板<br>
-1.OpenZeppelin 的透明可升级代理<br>
-2.UUPS 代理实现</p>
+<p>有两种代理合约的模板</p>
+<ul>
+<li>1.OpenZeppelin 的透明可升级代理</li>
+<li>2.UUPS 代理实现</li>
+</ul>
 <p>OpenZeppelin和UUPS的设计模式都是不让在代理合约中直接实现更改管理员地址的操作来避免出现函数选择器碰撞，进而来导致实现合约地址或者是管理员地址被错误的更改</p>
 <p>下面我们来逐一分析：</p>
 <p>OpenZeppelin的实现模式：<br>
@@ -214,8 +218,8 @@ contract ProxyAdmin is Ownable {
 
 </code></pre>
 <p>proxy contract,这个合约由三个合约组成</p>
-<pre class="notranslate"><code class="notranslate">1.proxy.sol  给定地址，并向该地址发送委托调用
-abstract contract Proxy {
+<p>1.proxy.sol  给定地址，并向该地址发送委托调用</p>
+<pre class="notranslate"><code class="notranslate">abstract contract Proxy {
     function _delegate(address implementation) internal virtual {
         assembly {
             calldatacopy(0, 0, calldatasize())
@@ -242,11 +246,9 @@ abstract contract Proxy {
         _fallback();
     }
 }
-
-
-2.ERC1967Proxy.sol
-
-pragma solidity ^0.8.20;
+</code></pre>
+<p>2.ERC1967Proxy.sol</p>
+<pre class="notranslate"><code class="notranslate">pragma solidity ^0.8.20;
 
 import {Proxy} from "../Proxy.sol";
 import {ERC1967Utils} from "./ERC1967Utils.sol";
@@ -262,9 +264,9 @@ contract ERC1967Proxy is Proxy {
         return ERC1967Utils.getImplementation();
     }
 }
-
-3.TransparentUpgradeableProxy.sol 重头戏，负责合约的实现
-contract TransparentUpgradeableProxy is ERC1967Proxy {
+</code></pre>
+<p>3.TransparentUpgradeableProxy.sol 重头戏，负责合约的实现</p>
+<pre class="notranslate"><code class="notranslate">contract TransparentUpgradeableProxy is ERC1967Proxy {
     address private immutable _admin;  //不变量，这样可以避免每次fallback都从slot里面读取地址，省GAS
 
     error ProxyDeniedAdminAccess();
@@ -299,7 +301,10 @@ contract TransparentUpgradeableProxy is ERC1967Proxy {
     }
 }
 
-</code></pre></div>
+</code></pre>
+<p>附上原代码地址<a href="https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/proxy/transparent/TransparentUpgradeableProxy.sol">TransparentUpgradeableProxy</a></p>
+<p>还有一种设计就是UUPS的实现，UUPS的代理合约也没有直接升级实现地址的方法，从而避免了选择器碰撞，他用的是在逻辑合约上实现升级操作，因为调用逻辑合约使用的是代理合约的存储空间，所以就可以达到更改代理合约中的插槽的目的。没什么深奥的设计，先不赘述。</p>
+<p><a href="https://github.com/Vectorized/solady/blob/main/src/utils/UUPSUpgradeable.sol">UUPS</a></p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
