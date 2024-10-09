@@ -4,4 +4,20 @@
 众所周知，你在Approve一个地址spend你的代币的时候是会在区块链上发出event事件的，而Dune正好可以查询这些事件，一个标准的Approve事件如下图所示：
 ![image](https://github.com/user-attachments/assets/f5758ef9-f1d8-471f-9a29-a37dd9a94455)
 
-1. Topics0:这里是事件的签名hash,只要是approve事件，那就是这个hash.
+1.Topics0:这里是事件的签名hash,只要是approve事件，那就是这个hash.
+2.Owner
+3.Spender
+
+那么很简单，我们只需筛选出来topic0是approve事件，spender是被攻击合约的，就能简单得到了
+![image](https://github.com/user-attachments/assets/5366d258-ea53-4205-bd72-978fda80ce0f)
+
+0xb629就是我们上面攻击的受害者
+
+给出查询代码
+```SQL
+SELECT *
+FROM bnb.logs
+WHERE topic0 = 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925
+AND topic2 = 0x000000000000000000000000068ba5d0540e27b39c71a00a1c0c1e669d62dc10
+LIMIT 20;
+```
