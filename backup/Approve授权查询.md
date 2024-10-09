@@ -11,7 +11,7 @@
 那么很简单，我们只需筛选出来topic0是approve事件，spender是被攻击合约的，就能简单得到了
 ![image](https://github.com/user-attachments/assets/5366d258-ea53-4205-bd72-978fda80ce0f)
 
-0xb629就是我们上面攻击的受害者
+0xb69a就是我们上面攻击的受害者
 
 给出查询代码
 ```SQL
