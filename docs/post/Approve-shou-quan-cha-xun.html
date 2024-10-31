@@ -99,7 +99,18 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-k">FROM</span> <span class="pl-c1">bnb</span>.<span class="pl-c1">logs</span>
 <span class="pl-k">WHERE</span> topic0 <span class="pl-k">=</span> 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925
 <span class="pl-k">AND</span> topic2 <span class="pl-k">=</span> 0x000000000000000000000000068ba5d0540e27b39c71a00a1c0c1e669d62dc10
-<span class="pl-k">LIMIT</span> <span class="pl-c1">20</span>;</pre></div></div>
+<span class="pl-k">LIMIT</span> <span class="pl-c1">20</span>;</pre></div>
+<p>补充一个冷知识：合约的字节码中会有函数的signature,所以我们可以查找函数的4字节slector code:</p>
+<pre class="notranslate"><code class="notranslate">SELECT
+  *
+FROM ethereum.creation_traces
+WHERE
+  TRY_CAST(code AS VARCHAR) LIKE '%689368%'
+LIMIT 20
+</code></pre>
+<p>结果示意图：<br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5a7a9213-dbbb-44bd-88c9-3bd5515e6569"><img src="https://github.com/user-attachments/assets/5a7a9213-dbbb-44bd-88c9-3bd5515e6569" alt="image" style="max-width: 100%;"></a></p>
+<p>这样可以查找到具有特定函数名称的合约</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

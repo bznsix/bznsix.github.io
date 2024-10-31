@@ -21,3 +21,18 @@ WHERE topic0 = 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b92
 AND topic2 = 0x000000000000000000000000068ba5d0540e27b39c71a00a1c0c1e669d62dc10
 LIMIT 20;
 ```
+
+补充一个冷知识：合约的字节码中会有函数的signature,所以我们可以查找函数的4字节slector code:
+```
+SELECT
+  *
+FROM ethereum.creation_traces
+WHERE
+  TRY_CAST(code AS VARCHAR) LIKE '%689368%'
+LIMIT 20
+```
+
+结果示意图：
+![image](https://github.com/user-attachments/assets/5a7a9213-dbbb-44bd-88c9-3bd5515e6569)
+
+这样可以查找到具有特定函数名称的合约
