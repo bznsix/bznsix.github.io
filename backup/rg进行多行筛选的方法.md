@@ -23,3 +23,11 @@ rg -F "function buy()" -A 10 | awk '
     }
 '
 ```
+
+补充一个promot:
+我想使用rg搜索这种格式的代码段  function PythToken()
+    public
+  {
+    balances[msg.sender] = totalSupply;
+  }
+  要求必须有public方法，同时含有balances[msg.sender] = totalSupply; 段
