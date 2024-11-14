@@ -176,7 +176,78 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
   }
 </code></pre>
 <p>而这个值会增加pershare的值，从而导致奖励计算中的magnifiedDividendPerShare.mul(balanceOf(_owner)).toInt256Safe() 变大，而magnifiedDividendCorrections[_owner]).toUint256Safe() / magnitude; 是记录的用户mint的那一刻的magnifiedDividendPerShare，从而使两者之间产生了差值，开始分红。</p>
-<p>总而言之，挺巧妙的设计，同时需要一些数学头脑。</p></div>
+<p>总而言之，挺巧妙的设计，同时需要一些数学头脑。</p>
+<p>言归正传，让我们回到exp上来：<br>
+什么样的token的分红机制才能让我们有可能进行exp呢？<br>
+1.分红的利润不能来自于你自己的购买、卖出收的税。<br>
+我们前面已经分析过了，在你添加流动性之前，分红合约积累的ETH不会累积到你的分红份额里。<br>
+2.可以伪造多个大户分红的地址。主要体现在分红合约的setbalance有问题，在某些情况下无法执行。</p>
+<p>以OSN为例子<a href="https://www.cnblogs.com/ACaiGarden/p/18389667" rel="nofollow">参考资料</a><br>
+OSN的分红资金来源于合约本身自己持有的OSN代币</p>
+<pre class="notranslate"><code class="notranslate">if (!_isExcludedFromFees[from] &amp;&amp; !_isExcludedFromFees[to]) {
+            if (
+                !isAddLP &amp;&amp;
+                !swapping &amp;&amp;
+                automatedMarketMakerPairs[to] &amp;&amp;
+                from != owner() &amp;&amp;
+                to != owner()
+            ) {
+                swapping = true;
+                uint256 sellAmount = 0;
+                if (block.timestamp &lt;= startSwapTime + 30 days) {
+                    sellAmount = (amount * 12) / 100;
+                } else if (block.timestamp &lt;= startSwapTime + 60 days) {
+                    sellAmount = (amount * 4) / 100;
+                } else if (block.timestamp &lt;= startSwapTime + 90 days) {
+                    sellAmount = (amount * 6) / 100;
+                } else if (block.timestamp &lt;= startSwapTime + 120 days) {
+                    sellAmount = (amount * 8) / 100;
+                }
+
+                if (sellAmount &gt; 0 &amp;&amp; balanceOf(address(this)) &gt;= sellAmount) {
+                    swapAndSendDividends(sellAmount);
+                    burnPoolToken(sellAmount);
+                }
+                uint256 contractTokenBalance = balanceOf(taxAddress);
+                bool canSwap = contractTokenBalance &gt;= swapTokensAtAmount;
+                if (canSwap) {
+                    swapAndAddLiqidity(contractTokenBalance);
+                }
+                swapping = false;
+            }
+            require(block.timestamp &gt;= startSwapTime, "not start");
+</code></pre>
+<p>每当卖出代币时，会同步兑换合约代币给分红合约，且不会从你转账的里面扣除。这就满足了我们的条件1</p>
+<p>同时setbalance的操作是统计的LP合约，单纯的LP转移是无法被统计到的，只需要转移LP后，手动触发代币合约里的记录操作，就可以满足条件2 伪造多个分红大户的操作</p>
+<pre class="notranslate"><code class="notranslate">if (to == uniswapV2Pair &amp;&amp; address(uniswapV2Router) == msg.sender) {
+            addLPLiquidity = _isAddLiquidity(amount);
+            if (addLPLiquidity &gt; 0) {
+                isAddLP = true;
+                userInfo = _userInfo[from];
+                userInfo.lpAmount += addLPLiquidity;
+                try
+                    lpDividendTracker.setBalance(
+                        payable(from),
+                        userInfo.lpAmount
+                    )
+                {} catch {}
+            }
+        }
+
+        uint256 removeLPLiquidity;
+        if (from == uniswapV2Pair) {
+            removeLPLiquidity = _strictCheckBuy(amount);
+            if (removeLPLiquidity &gt; 0) {
+                if (!_isExcludedFromFees[to]) {
+                    require(_userInfo[to].lpAmount &gt;= removeLPLiquidity);
+                }
+                uint256 blp = IUniswapV2Pair(uniswapV2Pair).balanceOf(to);
+                _userInfo[to].lpAmount = blp;
+                try lpDividendTracker.setBalance(payable(to), blp) {} catch {}
+            }
+        }
+</code></pre>
+<p>用此方法，攻击者就可以成功窃取到利润，利润的来源本质是OSN合约中的OSN。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
