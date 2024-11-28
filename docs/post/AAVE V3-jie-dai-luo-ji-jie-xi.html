@@ -223,7 +223,27 @@ aUSDC 合约
 <p>所以我们只需要去对应的atoken合约下看他持有的资产就能看到对应的数据。</p>
 <p>想要获取池子的信息我们可以主要看两个东西<br>
 1.AaveProtocolDataProvider  这里提供了所有的atokens信息，池子借贷多少资产多少等信息。<br>
-2.PoolAddressesProvider  这里提供了具体管理的池子信息，使用的预言机地址等。</p></div>
+2.PoolAddressesProvider  这里提供了具体管理的池子信息，使用的预言机地址等。</p>
+<p>预言机的实现一般是这样的：</p>
+<pre class="notranslate"><code class="notranslate">  /// @inheritdoc IPriceOracleGetter
+  function getAssetPrice(address asset) public view override returns (uint256) {
+    AggregatorInterface source = assetsSources[asset];
+
+    if (asset == BASE_CURRENCY) {
+      return BASE_CURRENCY_UNIT;
+    } else if (address(source) == address(0)) {
+      return _fallbackOracle.getAssetPrice(asset);
+    } else {
+      int256 price = source.latestAnswer();
+      if (price &gt; 0) {
+        return uint256(price);
+      } else {
+        return _fallbackOracle.getAssetPrice(asset);
+      }
+    }
+  }
+</code></pre>
+<p>会根据asset资产的地址获取对应的assetsSources[asset]地址，从而调用对应的latestAnswer函数获取最新的价格。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>

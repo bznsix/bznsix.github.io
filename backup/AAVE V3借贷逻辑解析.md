@@ -139,3 +139,25 @@ aUSDC 合约
 想要获取池子的信息我们可以主要看两个东西
 1.AaveProtocolDataProvider  这里提供了所有的atokens信息，池子借贷多少资产多少等信息。
 2.PoolAddressesProvider  这里提供了具体管理的池子信息，使用的预言机地址等。
+
+预言机的实现一般是这样的：
+```
+  /// @inheritdoc IPriceOracleGetter
+  function getAssetPrice(address asset) public view override returns (uint256) {
+    AggregatorInterface source = assetsSources[asset];
+
+    if (asset == BASE_CURRENCY) {
+      return BASE_CURRENCY_UNIT;
+    } else if (address(source) == address(0)) {
+      return _fallbackOracle.getAssetPrice(asset);
+    } else {
+      int256 price = source.latestAnswer();
+      if (price > 0) {
+        return uint256(price);
+      } else {
+        return _fallbackOracle.getAssetPrice(asset);
+      }
+    }
+  }
+```
+会根据asset资产的地址获取对应的assetsSources[asset]地址，从而调用对应的latestAnswer函数获取最新的价格。
