@@ -134,3 +134,8 @@ aUSDC 合约
 └── 获得 1000 aUSDC（代表你的存款份额）
 ```
 所以我们只需要去对应的atoken合约下看他持有的资产就能看到对应的数据。
+
+
+想要获取池子的信息我们可以主要看两个东西
+1.AaveProtocolDataProvider  这里提供了所有的atokens信息，池子借贷多少资产多少等信息。
+2.PoolAddressesProvider  这里提供了具体管理的池子信息，使用的预言机地址等。
