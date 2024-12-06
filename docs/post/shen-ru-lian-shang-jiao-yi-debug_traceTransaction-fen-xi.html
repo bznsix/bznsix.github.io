@@ -89,7 +89,7 @@ Geth客户端提供了一个方法：debug_traceTransaction，这个方法可以
 
 <span class="pl-s1">node_url</span> <span class="pl-c1">=</span> <span class="pl-s">"https://bsc-mainnet.core.chainstack.com/35848e183f3e3303c8cfeacbea831cab"</span> 
 <span class="pl-c"># 创建Web3实例,而不是HTTPProvider</span>
-<span class="pl-s1">web3</span> <span class="pl-c1">=</span> <span class="pl-v">Web3</span>(<span class="pl-v">Web3</span>.<span class="pl-v">HTTPProvider</span>(<span class="pl-s1">node_url</span>))
+<span class="pl-s1">web3</span> <span class="pl-c1">=</span> <span class="pl-en">Web3</span>(<span class="pl-v">Web3</span>.<span class="pl-c1">HTTPProvider</span>(<span class="pl-s1">node_url</span>))
 
 <span class="pl-s1">tx_hash</span> <span class="pl-c1">=</span> <span class="pl-s">"0xfb81763c20b751ab92510bfd201a3502d9089390dfe4eeaecf4272639464fb9b"</span>
 
@@ -102,7 +102,7 @@ Geth客户端提供了一个方法：debug_traceTransaction，这个方法可以
 
 <span class="pl-c"># 注意: debug_traceTransaction 方法可能不被所有节点支持</span>
 <span class="pl-c"># 如果您确实需要使用此方法,请确保您的节点支持它</span>
-<span class="pl-s1">tx_traces</span> <span class="pl-c1">=</span> <span class="pl-s1">web3</span>.<span class="pl-s1">provider</span>.<span class="pl-en">make_request</span>(<span class="pl-s">'debug_traceTransaction'</span>, [<span class="pl-s1">tx_hash</span>, <span class="pl-s1">tracer</span>])
+<span class="pl-s1">tx_traces</span> <span class="pl-c1">=</span> <span class="pl-s1">web3</span>.<span class="pl-c1">provider</span>.<span class="pl-c1">make_request</span>(<span class="pl-s">'debug_traceTransaction'</span>, [<span class="pl-s1">tx_hash</span>, <span class="pl-s1">tracer</span>])
 <span class="pl-en">pprint</span>(<span class="pl-s1">tx_traces</span>)</pre></div>
 <p>我们可以得到trace的记录：</p>
 <pre class="notranslate"><code class="notranslate">{'id': 0,
