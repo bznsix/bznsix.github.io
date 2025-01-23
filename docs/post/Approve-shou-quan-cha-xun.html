@@ -101,12 +101,16 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <span class="pl-k">AND</span> topic2 <span class="pl-k">=</span> 0x000000000000000000000000068ba5d0540e27b39c71a00a1c0c1e669d62dc10
 <span class="pl-k">LIMIT</span> <span class="pl-c1">100</span>;</pre></div>
 <p>补充一个冷知识：合约的字节码中会有函数的signature,所以我们可以查找函数的4字节slector code:</p>
-<pre class="notranslate"><code class="notranslate">SELECT
-  *
-FROM ethereum.creation_traces
-WHERE
-  TRY_CAST(code AS VARCHAR) LIKE '%689368%'
-LIMIT 20
+<pre class="notranslate"><code class="notranslate">SELECT 
+  block_time, 
+  address
+FROM 
+  bnb.creation_traces
+WHERE 
+  TRY_CAST(code AS VARCHAR) LIKE '%e8078d94%'
+ORDER BY 
+  block_time DESC
+LIMIT 500;
 </code></pre>
 <p>结果示意图：<br>
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5a7a9213-dbbb-44bd-88c9-3bd5515e6569"><img src="https://github.com/user-attachments/assets/5a7a9213-dbbb-44bd-88c9-3bd5515e6569" alt="image" style="max-width: 100%;"></a></p>

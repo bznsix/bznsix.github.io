@@ -24,12 +24,16 @@ LIMIT 100;
 
 补充一个冷知识：合约的字节码中会有函数的signature,所以我们可以查找函数的4字节slector code:
 ```
-SELECT
-  *
-FROM ethereum.creation_traces
-WHERE
-  TRY_CAST(code AS VARCHAR) LIKE '%689368%'
-LIMIT 20
+SELECT 
+  block_time, 
+  address
+FROM 
+  bnb.creation_traces
+WHERE 
+  TRY_CAST(code AS VARCHAR) LIKE '%e8078d94%'
+ORDER BY 
+  block_time DESC
+LIMIT 500;
 ```
 
 结果示意图：
