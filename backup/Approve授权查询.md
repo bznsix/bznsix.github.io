@@ -15,11 +15,11 @@
 
 给出查询代码
 ```SQL
-SELECT *
+SELECT block_time, tx_from, tx_to, data
 FROM bnb.logs
 WHERE topic0 = 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925
 AND topic2 = 0x000000000000000000000000068ba5d0540e27b39c71a00a1c0c1e669d62dc10
-LIMIT 20;
+LIMIT 100;
 ```
 
 补充一个冷知识：合约的字节码中会有函数的signature,所以我们可以查找函数的4字节slector code:
