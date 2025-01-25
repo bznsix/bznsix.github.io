@@ -13,12 +13,12 @@
 <meta name="description" content="为了能第一时间造出来符合需求的calldata，我们需要了解一下calldata的编码方式
 
 首先两个大前提：
-1.不变量补0是在左边补，例如uint256(uint160(address))，这样你得到的回事0x00000.....的一串数据。">
+1.大小已知的变量补0是在左边补，例如uint256(uint160(address))，这样你得到的回事0x00000.....的一串数据。">
 <meta property="og:title" content="solidity编码一览">
 <meta property="og:description" content="为了能第一时间造出来符合需求的calldata，我们需要了解一下calldata的编码方式
 
 首先两个大前提：
-1.不变量补0是在左边补，例如uint256(uint160(address))，这样你得到的回事0x00000.....的一串数据。">
+1.大小已知的变量补0是在左边补，例如uint256(uint160(address))，这样你得到的回事0x00000.....的一串数据。">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://bznsix.github.io/post/solidity-bian-ma-yi-lan.html">
 <meta property="og:image" content="https://img2.imgtp.com/2024/04/11/AhM7uVjT.png">
@@ -81,8 +81,8 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><p>为了能第一时间造出来符合需求的calldata，我们需要了解一下calldata的编码方式</p>
 <p>首先两个大前提：<br>
-1.不变量补0是在左边补，例如uint256(uint160(address))，这样你得到的回事0x00000.....的一串数据。<br>
-2.变量补0，数组、bytes等是在右边补。</p>
+1.大小已知的变量补0是在左边补，例如uint256(uint160(address))，这样你得到的回事0x00000.....的一串数据。<br>
+2.大小可变的变量补0，数组、bytes等是在右边补。</p>
 <p>然后：<br>
 1.abi.encode编码会打乱你的元组数据，他会自己寻找最优解决方案来给你编码数据。<br>
 2.abi.encode编码动态数组的时候，会有多余的数据出现，例如数组的大小、数组在数据中的起始位置等参数。<br>
