@@ -1,12 +1,44 @@
-首先说几个很重大的误区：
-一定不能--syncmode 设置为full,这样会从第一个区块开始慢慢同步，**一定要设置为snap**，这样才会从你导入的缓存开始同步
-你看到了这样的日志就说明在从缓存同步了
-![image](https://github.com/user-attachments/assets/762e7a8f-3fca-451f-82a2-b3684d6217c2)
-最后附上我自己的同步指令：
+### 前言
+为了更快的筛选土狗，需要搭建一个本地节点，fast node的最前面的128个块是全数据的也够我们使用了，而且占用的空间很小，大概只需要500G左右可以说成本是相当的低了。
+
+### 准备工作
+下载geth
 ```
-/home/foxing/bnb_fullnode/geth --config /home/foxing/bnb_fullnode/config.toml --datadir /home/foxing/bnb_fullnode/data/ --cache 24000 --http --http.api 'web3,eth,net,debug,personal' --rpc.allow-unprotected-txs --txlookuplimit 0 --syncmode=snap --snapshot=true --tries-verify-mode=none --diffblock=5000 --maxpeers 500 --maxpendpeers 200 --ws --ws.port 8545 --ws.addr localhost --ws.origins=*
+# Linux
+wget   $(curl -s https://api.github.com/repos/bnb-chain/bsc/releases/latest |grep browser_ |grep geth_linux |cut -d\" -f4)
+mv geth_linux geth
+chmod -v u+x geth
 ```
-几篇很重要的参考：
-[1](https://github.com/bnb-chain/bsc/issues/1193)
-[2](https://learnblockchain.cn/article/5324)
+下载配置文件
+```
+wget   $(curl -s https://api.github.com/repos/bnb-chain/bsc/releases/latest |grep browser_ |grep mainnet |cut -d\" -f4)
+unzip mainnet.zip
+```
+下载snap快照,跟着48的指示应该一看就会，注意下载fast那个最小的那个，这样的话也不用裁剪数据了
+```
+https://github.com/48Club/bsc-snapshots
+```
+### 运行
+全部解压完成后运行指令
+```
+./geth --tries-verify-mode none --config ./config.toml --datadir ./bsc_node/geth  --cache 8000 --rpc.allow-unprotected-txs --history.transactions 0
+```
+注意这里选用的--datadir应该是包含了chaindata的上层文件夹，如果你文件夹目录没选对那你的快照基本上没用，还是从头开始同步。
+
+给出我的文件夹目录示例：
+``` └── geth
+      ├── bsc.log -> /home/foxing/node/bsc_node/geth/bsc.log.2025-01-29_15
+      ├── chaindata
+      ├── geth
+      ├── geth.ipc
+      └── keystore
+```
+可以看到我这里的geth文件夹下含有chaindata文件夹，所以这里给定的datadir是父文件夹geth。
+
+### 补充
+[官方教程](https://docs.bnbchain.org/bnb-smart-chain/developers/node_operators/fast_node/#download-the-pre-build-binaries-from-release-page-or-follow-the-instructions-below)
+裁剪数据指令
+```
+./geth snapshot insecure-prune-all --datadir ./node  ./genesis.json
+```
 
