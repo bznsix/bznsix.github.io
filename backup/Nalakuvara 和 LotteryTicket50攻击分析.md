@@ -89,14 +89,18 @@ function transferToken(uint  amount) public returns (bool) {
         uint ticket_count=_amountTickets/MIN_TICKET;
         uint amountUSDTALL=ticket_count*MIN_DEPOSIT;
         uint amountUSDT=amountUSDTALL/2*997/1000;
+        uint256 totalSupplyLP=IERC20(pairAddress).totalSupply();
+        uint liquidity = (amountUSDT * totalSupplyLP) / reserveUSDT;
+
+
 ```
 
-第一步中的mint ticket 看的是你提供了多少USDC，第二部中的 destroy ticket 看的是你持有多少ticket，他并不计算这些ticket对应了多少的value 的USDC。
+第一步中的mint ticket 看的是你提供了多少USDC，第二部中的 destroy ticket 把对应的USDT份额所占多少USDT乘以totalSupplyLP得到需要多少份额的LP来销毁对应的lp token。
+注意攻击者在真正开始销毁LP之前进行了Nala 换回 USDC的操作。
 
-所以核心的攻击思路就是--> 先拉高整个Nala-USDC的pair交易对的价格，逼着lottery合约以高价格添加流动性（这时候合约里几乎没有了Nala）你可以抽象成只添加了USDC进pair。最后换回Nala，destroy ticket。
+<img width="1443" alt="Image" src="https://github.com/user-attachments/assets/dd0e3bb6-c3b4-4669-aea4-2ea5ab97fe90" />
 
-整个流程可以抽象成为一个三明治攻击，把lottery合约的添加流动性夹在了中间。从而获取了利润。
+所以在这个公式中uint liquidity = (amountUSDT * totalSupplyLP) / reserveUSDT;  reserveUSDT基本没变amountUSDT基本没变，totalSupplyLP增多的情况下导致了liquidity的份额会变多，从而得到了多销毁份额的利润。
 
-那么问题就来了：常规的三明治攻击都是夹杂着合约自己就有的USDC，或者是第三方的资金。但是这里用于添加流动性的是我们自己的USDC，利润从哪里来的？
 
-我的解释是，用于添加流动性的usdc拉高了整个池子的平均份额，从而在分批次减少流动性的时候能够获取到更多的利润。
+
