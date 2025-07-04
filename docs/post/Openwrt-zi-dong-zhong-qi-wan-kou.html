@@ -110,7 +110,7 @@ fi
 </code></pre>
 <p>每隔5分钟使用本机代理服务去访问google，如果失败就重启wan服务重新拨号。</p>
 <p>可以看到日志：</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/01296c53-8e8b-41ec-ac96-dda2caf7abdc"><img src="https://github.com/user-attachments/assets/01296c53-8e8b-41ec-ac96-dda2caf7abdc" alt="Image" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/01296c53-8e8b-41ec-ac96-dda2caf7abdc"><img src="https://github.com/user-attachments/assets/01296c53-8e8b-41ec-ac96-dda2caf7abdc" alt="Image" style="max-width: 100%; height: auto;"></a></p>
 <p>确实检测到了一定时间的udp封禁</p>
 <p>最后将脚本注册到crontab中，5min执行一次</p>
 <pre class="notranslate"><code class="notranslate">*/5 * * * * /root/check_vpn.sh

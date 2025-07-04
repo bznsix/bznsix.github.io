@@ -93,9 +93,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 </ul>
 <p>下面来看下我们启用的配置：<br>
 1.启用802.11相关的协议支持<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/2d6d31c1-d942-452d-bc1e-fd713388972e"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/2d6d31c1-d942-452d-bc1e-fd713388972e" alt="image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/2d6d31c1-d942-452d-bc1e-fd713388972e"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/2d6d31c1-d942-452d-bc1e-fd713388972e" alt="image" style="max-width: 100%; height: auto;"></a><br>
 2.启用USB network，wireless lan的支持<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/657f9d0a-e7ae-4674-b636-729830819cea"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/657f9d0a-e7ae-4674-b636-729830819cea" alt="image" style="max-width: 100%;"></a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/657f9d0a-e7ae-4674-b636-729830819cea"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/657f9d0a-e7ae-4674-b636-729830819cea" alt="image" style="max-width: 100%; height: auto;"></a></p>
 <p>之后保存完成后记得按照我上文描述的覆盖x86-all.config，并且删除原来的deb来达到增量编译的效果</p>
 <p>将新编出来的系统安装完成后我们使用dksm来进行ko的编译，步骤如下:</p>
 <pre class="notranslate"><code class="notranslate">#先安装我们的内核头文件，目录位于~/opennetworklinux/REPO/buster/packages/binary-amd64onl-kernel-5.4-lts-x86-64-all_1.0.0_amd64.deb，拷贝到设备上dpkg -i 安装

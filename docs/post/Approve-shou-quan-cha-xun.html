@@ -87,12 +87,12 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 像是这个漏洞<a href="https://x.com/TenArmorAlert/status/1843632599169900558" rel="nofollow">tx</a><br>
 那么，如果我们想要复制这种交易，或者是批量查询谁事先授权过危险合约怎么办呢？一个个翻交互TX吗？No！这里给出一个解决方案。<br>
 众所周知，你在Approve一个地址spend你的代币的时候是会在区块链上发出event事件的，而Dune正好可以查询这些事件，一个标准的Approve事件如下图所示：<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f5758ef9-f1d8-471f-9a29-a37dd9a94455"><img src="https://github.com/user-attachments/assets/f5758ef9-f1d8-471f-9a29-a37dd9a94455" alt="image" style="max-width: 100%;"></a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/f5758ef9-f1d8-471f-9a29-a37dd9a94455"><img src="https://github.com/user-attachments/assets/f5758ef9-f1d8-471f-9a29-a37dd9a94455" alt="image" style="max-width: 100%; height: auto;"></a></p>
 <p>1.Topics0:这里是事件的签名hash,只要是approve事件，那就是这个hash.<br>
 2.Owner<br>
 3.Spender</p>
 <p>那么很简单，我们只需筛选出来topic0是approve事件，spender是被攻击合约的，就能简单得到了<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5366d258-ea53-4205-bd72-978fda80ce0f"><img src="https://github.com/user-attachments/assets/5366d258-ea53-4205-bd72-978fda80ce0f" alt="image" style="max-width: 100%;"></a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5366d258-ea53-4205-bd72-978fda80ce0f"><img src="https://github.com/user-attachments/assets/5366d258-ea53-4205-bd72-978fda80ce0f" alt="image" style="max-width: 100%; height: auto;"></a></p>
 <p>0xb69a就是我们上面攻击的受害者</p>
 <p>给出查询代码</p>
 <div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-k">SELECT</span> block_time, tx_from, tx_to, data
@@ -113,7 +113,7 @@ ORDER BY
 LIMIT 500;
 </code></pre>
 <p>结果示意图：<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5a7a9213-dbbb-44bd-88c9-3bd5515e6569"><img src="https://github.com/user-attachments/assets/5a7a9213-dbbb-44bd-88c9-3bd5515e6569" alt="image" style="max-width: 100%;"></a></p>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5a7a9213-dbbb-44bd-88c9-3bd5515e6569"><img src="https://github.com/user-attachments/assets/5a7a9213-dbbb-44bd-88c9-3bd5515e6569" alt="image" style="max-width: 100%; height: auto;"></a></p>
 <p>这样可以查找到具有特定函数名称的合约</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 

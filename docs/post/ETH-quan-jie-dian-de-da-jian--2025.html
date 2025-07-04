@@ -96,7 +96,7 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <li>硬盘 4T</li>
 <li>宽带 中国移动 200M下行 30M上行</li>
 </ol>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/4f92cffe-8073-4937-ab18-56bcafdaf7ce"><img src="https://github.com/user-attachments/assets/4f92cffe-8073-4937-ab18-56bcafdaf7ce" alt="Image" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/4f92cffe-8073-4937-ab18-56bcafdaf7ce"><img src="https://github.com/user-attachments/assets/4f92cffe-8073-4937-ab18-56bcafdaf7ce" alt="Image" style="max-width: 100%; height: auto;"></a></p>
 <p>注意 这台虚拟机上还运行了一个bsc的fast node，属于是极低成本了。这也侧面证实了evm对资源的需求极低。</p>
 <h3>配置信标链</h3>
 <p>这里使用了prysm</p>
@@ -136,9 +136,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <p>注意这里使用的http.port我做了修改，因为和bsc启动的冲突了。同时--authrpc.port 8551就代表了和信标链通信的端口，--authrpc.jwtsecret则需要和信标链使用同一个jwt.hex文件。</p>
 <h3>节点同步</h3>
 <p>如果你全部配置完成，那么你可以看到geth的输出日志正在追块了</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5cc0ba1e-80a8-47ba-ab25-c28f0b0c86c2"><img src="https://github.com/user-attachments/assets/5cc0ba1e-80a8-47ba-ab25-c28f0b0c86c2" alt="Image" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5cc0ba1e-80a8-47ba-ab25-c28f0b0c86c2"><img src="https://github.com/user-attachments/assets/5cc0ba1e-80a8-47ba-ab25-c28f0b0c86c2" alt="Image" style="max-width: 100%; height: auto;"></a></p>
 <p>国内的对等节点并不多，只有10个左右，但是同步速度并不慢，下载节点的速度可以达到23MB/s,这基本是我的带宽的极限了。</p>
-<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/b4947c9d-f6f3-41a7-8db2-38c795b30f73"><img src="https://github.com/user-attachments/assets/b4947c9d-f6f3-41a7-8db2-38c795b30f73" alt="Image" style="max-width: 100%;"></a></p>
+<p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/b4947c9d-f6f3-41a7-8db2-38c795b30f73"><img src="https://github.com/user-attachments/assets/b4947c9d-f6f3-41a7-8db2-38c795b30f73" alt="Image" style="max-width: 100%; height: auto;"></a></p>
 <p>在同步完成后，再启动信标链可以去掉checkpoint参数了,直接执行</p>
 <pre class="notranslate"><code class="notranslate">./prysm.sh beacon-chain --execution-endpoint=http://localhost:8551 --jwt-secret=./jwt.hex 
 </code></pre>

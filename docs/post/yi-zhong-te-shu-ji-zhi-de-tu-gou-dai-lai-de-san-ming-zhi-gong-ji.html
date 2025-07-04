@@ -75,9 +75,9 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
     <div id="content">
 <div class="markdown-body" id="postBody"><p>近来，一种特殊的”攻击“频繁的出现在我们眼前，或许叫他攻击也不对，本质上这更像是由于dev为了自己的私利导致的套利行为。<br>
 首先先看易受攻击的代码片段：<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/7a916809-897a-45fe-96a4-f909eae881ee"><img src="https://github.com/user-attachments/assets/7a916809-897a-45fe-96a4-f909eae881ee" alt="image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/7a916809-897a-45fe-96a4-f909eae881ee"><img src="https://github.com/user-attachments/assets/7a916809-897a-45fe-96a4-f909eae881ee" alt="image" style="max-width: 100%; height: auto;"></a><br>
 简要说下逻辑：这类土狗合约在交易、转账的过程中会扣税到自己地址，积攒到一定数量之后会触发卖出操作，将自己地址拥有的土狗换成ETH、稳定币等发送给Dev,拿去添加流动性等。又因为这个钱本来就是收税来的，所以兑换的时候并不会考虑到滑点操作。当然也有可能是懒，不想计算滑点操作哈哈。<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/449885a1-9ade-46d2-9b6d-7aa9bd46ccf4"><img src="https://github.com/user-attachments/assets/449885a1-9ade-46d2-9b6d-7aa9bd46ccf4" alt="image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/449885a1-9ade-46d2-9b6d-7aa9bd46ccf4"><img src="https://github.com/user-attachments/assets/449885a1-9ade-46d2-9b6d-7aa9bd46ccf4" alt="image" style="max-width: 100%; height: auto;"></a><br>
 好了，有了以上的前提条件，我们尝试来构建一个可能的攻击向量：</p>
 <ol>
 <li>从V3、V2不同的pair来借出土狗。这里不能是合约里会进行卖出的那个代币，因为这是我们要夹住合约里的卖出。</li>

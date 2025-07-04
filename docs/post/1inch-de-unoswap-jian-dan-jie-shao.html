@@ -109,11 +109,11 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 在查看了POC后，发现也只是单纯抄袭了黑客的传参，并没有解释含义。<br>
 但是在观察调用后，发现了在unoswap执行后会去调用pancakeswap的swap函数去进行代币-&gt;WBNB的交换，所以这个传参大概率是含有Pair的地址的。<br>
 对10进制的uint256进行转换得到：<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/a197cab4-f9d8-49ab-bdff-0f8b9cd9185d"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/a197cab4-f9d8-49ab-bdff-0f8b9cd9185d" alt="image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/a197cab4-f9d8-49ab-bdff-0f8b9cd9185d"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/a197cab4-f9d8-49ab-bdff-0f8b9cd9185d" alt="image" style="max-width: 100%; height: auto;"></a><br>
 发现数组主要有以下几部分构成：<br>
 0x4000000000000000，3b74a460，61eb789d75a95caa3ff50ed7e47b96c132fec082<br>
 其中最后一部分刚好是BTCB-WBNB的池子地址<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/4b98911f-37ae-4ae9-b07c-0b5ba59ddc62"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/4b98911f-37ae-4ae9-b07c-0b5ba59ddc62" alt="image" style="max-width: 100%;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/4b98911f-37ae-4ae9-b07c-0b5ba59ddc62"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/4b98911f-37ae-4ae9-b07c-0b5ba59ddc62" alt="image" style="max-width: 100%; height: auto;"></a><br>
 至于前面两部分具体代表了什么等我再深入看下solidity的汇编再说。</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
