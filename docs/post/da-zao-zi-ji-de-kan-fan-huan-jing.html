@@ -87,14 +87,14 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <strong>Qbittorent</strong><br>
 这是一个P2P下载器，可以允许你从RSS源订阅下载种子，并且可以自动更新，这样就可以达到有字幕组更新后我们自动下载的效果。<br>
 首先配置下RSS相关 设置-&gt;选项<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/e91db5b4-5024-4cfc-bb96-be0bff9acf2f"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/e91db5b4-5024-4cfc-bb96-be0bff9acf2f" alt="image" style="max-width: 100%; height: auto;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/e91db5b4-5024-4cfc-bb96-be0bff9acf2f"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/e91db5b4-5024-4cfc-bb96-be0bff9acf2f" alt="image" style="max-width: 100%;"></a><br>
 然后点击右侧RSS 点击加号 就可以添加RSS订阅链接了<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/e5ffd5e5-bf56-4bf0-9c7e-a231de95e40f"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/e5ffd5e5-bf56-4bf0-9c7e-a231de95e40f" alt="image" style="max-width: 100%; height: auto;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/e5ffd5e5-bf56-4bf0-9c7e-a231de95e40f"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/e5ffd5e5-bf56-4bf0-9c7e-a231de95e40f" alt="image" style="max-width: 100%;"></a><br>
 RSS链接获取的网站可以选用 <a href="https://share.acgnx.se/" rel="nofollow">这个</a>，注意将这个网站添加到你的科学规则中，不然RSS会订阅失败。<br>
 订阅成功后选择RSS下载器，添加一条规则，筛选出你想要的字幕组的规则，清晰度，然后勾选对你刚才订阅的RSS应用当前规则。<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/d4d17466-123f-4485-a0e3-3737a5d2ab0d"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/d4d17466-123f-4485-a0e3-3737a5d2ab0d" alt="image" style="max-width: 100%; height: auto;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/d4d17466-123f-4485-a0e3-3737a5d2ab0d"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/d4d17466-123f-4485-a0e3-3737a5d2ab0d" alt="image" style="max-width: 100%;"></a><br>
 这时候你就能看到你选中的正在下载<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/f31bd4c7-d8a8-4e25-b6c4-30f47b3f4bf4"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/f31bd4c7-d8a8-4e25-b6c4-30f47b3f4bf4" alt="image" style="max-width: 100%; height: auto;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/f31bd4c7-d8a8-4e25-b6c4-30f47b3f4bf4"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/f31bd4c7-d8a8-4e25-b6c4-30f47b3f4bf4" alt="image" style="max-width: 100%;"></a><br>
 附上qbittorrent的docker-compose.yml</p>
 <pre class="notranslate"><code class="notranslate">version: "3.9"
 
@@ -126,10 +126,10 @@ jellyfin直接使用以下命令安装，亲测插件库可以用，别用别的
 </code></pre>
 <p>我们这里需要挂在/media到内部的/media以此实现下载的资源直接刮削的效果<br>
 点击控制台-&gt;插件-&gt;存储库 添加如下存储库：<a href="https://jellyfin-plugin-bangumi.pages.dev/repository.json" rel="nofollow">https://jellyfin-plugin-bangumi.pages.dev/repository.json</a><br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/71def993-542c-481d-9e45-606cc8b74ab9"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/71def993-542c-481d-9e45-606cc8b74ab9" alt="image" style="max-width: 100%; height: auto;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/71def993-542c-481d-9e45-606cc8b74ab9"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/71def993-542c-481d-9e45-606cc8b74ab9" alt="image" style="max-width: 100%;"></a><br>
 之后点击目录安装我们的bangumi，这样就完成了刮削的配置<br>
 试看一下刮削的效果：<br>
-<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/a913bf95-b69c-4db8-812d-5ab1e6d5afc6"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/a913bf95-b69c-4db8-812d-5ab1e6d5afc6" alt="image" style="max-width: 100%; height: auto;"></a><br>
+<a target="_blank" rel="noopener noreferrer" href="https://github.com/bznsix/bznsix.github.io/assets/38829902/a913bf95-b69c-4db8-812d-5ab1e6d5afc6"><img src="https://github.com/bznsix/bznsix.github.io/assets/38829902/a913bf95-b69c-4db8-812d-5ab1e6d5afc6" alt="image" style="max-width: 100%;"></a><br>
 效果挺不错</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
