@@ -1,2 +1,138 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>佛性</title><link>https://bznsix.github.io</link><description>想办法干他一笔大的！</description><copyright>佛性</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img2.imgtp.com/2024/04/11/AhM7uVjT.png</url><title>avatar</title><link>https://bznsix.github.io</link></image><lastBuildDate>Tue, 12 Aug 2025 16:31:33 +0000</lastBuildDate><managingEditor>佛性</managingEditor><ttl>60</ttl><webMaster>佛性</webMaster></channel></rss>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0"><channel><title>佛性</title><link>https://bznsix.github.io</link><description>想办法干他一笔大的！</description><copyright>佛性</copyright><docs>http://www.rssboard.org/rss-specification</docs><generator>python-feedgen</generator><image><url>https://img2.imgtp.com/2024/04/11/AhM7uVjT.png</url><title>avatar</title><link>https://bznsix.github.io</link></image><lastBuildDate>Wed, 13 Aug 2025 16:27:16 +0000</lastBuildDate><managingEditor>佛性</managingEditor><ttl>60</ttl><webMaster>佛性</webMaster><item><title>Nalakuvara 和 LotteryTicket50攻击分析</title><link>https://bznsix.github.io/post/Nalakuvara%20-he-%20LotteryTicket50-gong-ji-fen-xi.html</link><description>这个曾经审计过，但是没看出来问题。</description><guid isPermaLink="true">https://bznsix.github.io/post/Nalakuvara%20-he-%20LotteryTicket50-gong-ji-fen-xi.html</guid><pubDate>Sun, 18 May 2025 15:51:49 +0000</pubDate></item><item><title>Openwrt自动重启wan口</title><link>https://bznsix.github.io/post/Openwrt-zi-dong-zhong-qi-wan-kou.html</link><description>在openwrt上运行了clash服务，用于接管下面所有设备的全局代理服务。</description><guid isPermaLink="true">https://bznsix.github.io/post/Openwrt-zi-dong-zhong-qi-wan-kou.html</guid><pubDate>Sun, 23 Mar 2025 13:42:24 +0000</pubDate></item><item><title>profanity2创建虚荣地址</title><link>https://bznsix.github.io/post/profanity2-chuang-jian-xu-rong-di-zhi.html</link><description>profanity有随机数太简单导致可以被强行爆破私钥的问题，在profanity2里面被修复了，下面简单介绍如何使用profanity2来生成靓号
+
+[项目地址](https://github.com/1inch/profanity2)
+
+使用教程：
+
+1.生成公钥和私钥
+
+`openssl ecparam -genkey -name secp256k1 -text -noout -outform DER | xxd -p -c 1000 | sed 's/41534e31204f49443a20736563703235366b310a30740201010420/Private Key: /' | sed 's/a00706052b8104000aa144034200/\'$'\nPublic Key: /'`
+
+得到结果如下
+
+45432d506172616d65746572733a202832353620626974290a
+Private Key: ed95bbeef50839294867ce138034bxxxxx328d600d32db40e625cdeca554d386                                                                                                     
+
+Public Key: 0434bca88471b4b482ce20ce95a35ec533c9fd5285e094897c59c8366a9d67ea75102a2d0def7a3f8a388a25a13db96cd9b2abc6670812929cc45ec08c51cd86bc
+
+2.记住这里的public key，使用profanity2 指令运行你想要的靓号 --matching加靓号形式 -z加publickey **注意去除前面的04**
+`./profanity2.arm --matching 0000 -z 34bca88471b4b482ce20ce95a35ec533c9fd5285e094897c59c8366a9d67ea75102a2d0def7a3f8a388a25a13db96cd9b2abc6670812929cc45ec08c51cd86bc`
+
+3.得到结果，输出如下
+`Time:     7s Score:  2 Private: 0x000003b2d29425cca1b88cd066b295204197cc862b5f648d057720116798ff11 Address: 0x0000bf5d5a9a33b010183161cc1c284060c41979`
+使用privatekey 和 第一步中的生成的privatekey 进行计算，脚本
+`hex((ed95bbeef50839294867ce138034bxxxxx328d600d32db40e625cdeca554d386 + 0x000003b2d29425cca1b88cd066b295204197cc862b5f648d057720116798ff11) % 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFC2F)
+`
+就能得到你想要的靓号了。</description><guid isPermaLink="true">https://bznsix.github.io/post/profanity2-chuang-jian-xu-rong-di-zhi.html</guid><pubDate>Thu, 13 Mar 2025 02:44:11 +0000</pubDate></item><item><title>ETH全节点的搭建-2025</title><link>https://bznsix.github.io/post/ETH-quan-jie-dian-de-da-jian--2025.html</link><description>### 前言
+ETH在升级后需要同时同步两个层。</description><guid isPermaLink="true">https://bznsix.github.io/post/ETH-quan-jie-dian-de-da-jian--2025.html</guid><pubDate>Wed, 29 Jan 2025 15:17:33 +0000</pubDate></item><item><title>solidity编码一览</title><link>https://bznsix.github.io/post/solidity-bian-ma-yi-lan.html</link><description>为了能第一时间造出来符合需求的calldata，我们需要了解一下calldata的编码方式
+
+首先两个大前提：
+1.大小已知的变量补0是在左边补，例如uint256(uint160(address))，这样你得到的回事0x00000.....的一串数据。</description><guid isPermaLink="true">https://bznsix.github.io/post/solidity-bian-ma-yi-lan.html</guid><pubDate>Sat, 25 Jan 2025 15:26:17 +0000</pubDate></item><item><title>Compound v2 借贷逻辑解析</title><link>https://bznsix.github.io/post/Compound%20v2%20-jie-dai-luo-ji-jie-xi.html</link><description>同理，为了理解Compound的整体架构，我们从他的borrow/repay入手，出于0市场攻击等达成的条件太苛刻。</description><guid isPermaLink="true">https://bznsix.github.io/post/Compound%20v2%20-jie-dai-luo-ji-jie-xi.html</guid><pubDate>Tue, 26 Nov 2024 09:52:26 +0000</pubDate></item><item><title>AAVE V3借贷逻辑解析</title><link>https://bznsix.github.io/post/AAVE%20V3-jie-dai-luo-ji-jie-xi.html</link><description>引言：先摆上一张图在这：&#13;
+&lt;img width='767' alt='image' src='https://github.com/user-attachments/assets/7285a792-646e-4711-bdee-3c0a7c38daa6'&gt;&#13;
+再放个参考链接：[解析](https://mirror.xyz/0x4339eA909BF03E7328AC14c75aF0940c082EA994/p1UxvRfJ_cTy-fZcEi66-AkEsb8jifZ9hNz5RUVptvU)&#13;
+&#13;
+AAVE V3中最重要的就是它的pool合约，我们也只需要关注这个合约就行。</description><guid isPermaLink="true">https://bznsix.github.io/post/AAVE%20V3-jie-dai-luo-ji-jie-xi.html</guid><pubDate>Sun, 24 Nov 2024 10:43:45 +0000</pubDate></item><item><title>Dividendpayingtoken的机制解析</title><link>https://bznsix.github.io/post/Dividendpayingtoken-de-ji-zhi-jie-xi.html</link><description>Dividendpayingtoken是一种常用在土狗里的分红机制，会根据你持仓的多少、添加流动性的数量来定期进行分红。</description><guid isPermaLink="true">https://bznsix.github.io/post/Dividendpayingtoken-de-ji-zhi-jie-xi.html</guid><pubDate>Thu, 14 Nov 2024 03:15:59 +0000</pubDate></item><item><title>BNB FastNode搭建-2025</title><link>https://bznsix.github.io/post/BNB%20FastNode-da-jian--2025.html</link><description>### 前言
+为了更快的筛选土狗，需要搭建一个本地节点，fast node的最前面的128个块是全数据的也够我们使用了，而且占用的空间很小，大概只需要500G左右可以说成本是相当的低了。</description><guid isPermaLink="true">https://bznsix.github.io/post/BNB%20FastNode-da-jian--2025.html</guid><pubDate>Mon, 04 Nov 2024 12:07:43 +0000</pubDate></item><item><title>Foundry添加流动性时报错</title><link>https://bznsix.github.io/post/Foundry-tian-jia-liu-dong-xing-shi-bao-cuo.html</link><description>写POC时遇到报错：&#13;
+![image](https://github.com/user-attachments/assets/f289b87f-c088-4e56-ade6-713c8a74210a)&#13;
+经过仔细检查，发现是添加时token0和token1位置写反了，交换下就好了。</description><guid isPermaLink="true">https://bznsix.github.io/post/Foundry-tian-jia-liu-dong-xing-shi-bao-cuo.html</guid><pubDate>Thu, 24 Oct 2024 06:45:36 +0000</pubDate></item><item><title>深入链上交易debug_traceTransaction分析</title><link>https://bznsix.github.io/post/shen-ru-lian-shang-jiao-yi-debug_traceTransaction-fen-xi.html</link><description>由于目前X上很多的web3安全公司都停止活动了，这导致很难获得一手的安全消息了。</description><guid isPermaLink="true">https://bznsix.github.io/post/shen-ru-lian-shang-jiao-yi-debug_traceTransaction-fen-xi.html</guid><pubDate>Thu, 24 Oct 2024 03:40:38 +0000</pubDate></item><item><title>AIZPT被攻击事件分析</title><link>https://bznsix.github.io/post/AIZPT-bei-gong-ji-shi-jian-fen-xi.html</link><description>挺简单的一个POC，但是其中蕴含的数学分析还是挺有意思的，分析一下提升下自己对数字的敏感性。</description><guid isPermaLink="true">https://bznsix.github.io/post/AIZPT-bei-gong-ji-shi-jian-fen-xi.html</guid><pubDate>Sat, 12 Oct 2024 03:08:13 +0000</pubDate></item><item><title>Approve授权查询</title><link>https://bznsix.github.io/post/Approve-shou-quan-cha-xun.html</link><description>经常攻击合约的小伙伴们都知道，经常有一些合约会有任意call的漏洞，允许你自定义调用calldata，常用的攻击链条就是构造包含transferfrom的calldata，偷偷把之前授权过危险合约的地址的钱给转过来。</description><guid isPermaLink="true">https://bznsix.github.io/post/Approve-shou-quan-cha-xun.html</guid><pubDate>Wed, 09 Oct 2024 06:52:56 +0000</pubDate></item><item><title>ERC1967可升级的合约实现</title><link>https://bznsix.github.io/post/ERC1967-ke-sheng-ji-de-he-yue-shi-xian.html</link><description>**EIP1967 指定代理合约的标准**&#13;
+&#13;
+1. 避免存储管理员地址被冲突&#13;
+&#13;
+2. 避免函数选择器碰撞导致changeadmin这种函数被碰撞导致改变了管理员地址&#13;
+&#13;
+通过手动指定一个随机slot来存储，进而避免被算出来碰撞的可能性&#13;
+&#13;
+实现地址存储于0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc&#13;
+管理地址存储于0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103&#13;
+是通过下面两个的地址来计算的&#13;
+&#13;
+bytes32(uint256(keccak256('eip1967.proxy.implementation')) - 1)&#13;
+bytes32(uint256(keccak256('eip1967.proxy.admin')) - 1)&#13;
+&#13;
+只要查看这些地址是否具有非0值，就可以判断这是不是一个代理合约，这也是ether scan判断的方式&#13;
+&#13;
+信标槽位 将多个代理指向同一个实现合约，因为数据被保存在代理合约的插槽中&#13;
+&#13;
+interface IBeacon {&#13;
+    function implementation() external view returns (address);&#13;
+}&#13;
+&#13;
+更改信标合约的返回值可以很简单的改变所有的代理&#13;
+信标插槽0xa3f0ad74e5423aebfd80d3ef4346578335a9a72aeaee59ff6cb3582b35133d50&#13;
+bytes32(uint256(keccak256('eip1967.proxy.beacon')) - 1)&#13;
+&#13;
+有两种代理合约的模板&#13;
+&#13;
+- 1.OpenZeppelin 的透明可升级代理&#13;
+- 2.UUPS 代理实现&#13;
+&#13;
+OpenZeppelin和UUPS的设计模式都是不让在代理合约中直接实现更改管理员地址的操作来避免出现函数选择器碰撞，进而来导致实现合约地址或者是管理员地址被错误的更改&#13;
+&#13;
+下面我们来逐一分析：&#13;
+&#13;
+OpenZeppelin的实现模式：&#13;
+不同于ERC1967规定的,他并不使用管理地址0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103来存储管理员的地址，而是在每次创建的同时&#13;
+都会创建一个proxy admin 合约，将代理合约的管理员地址设置为proxy admin的地址，再通过管控proxy admin的管理地址来进而管理代理合约的管理地址。</description><guid isPermaLink="true">https://bznsix.github.io/post/ERC1967-ke-sheng-ji-de-he-yue-shi-xian.html</guid><pubDate>Tue, 01 Oct 2024 14:28:26 +0000</pubDate></item><item><title>一种特殊机制的土狗带来的三明治攻击</title><link>https://bznsix.github.io/post/yi-zhong-te-shu-ji-zhi-de-tu-gou-dai-lai-de-san-ming-zhi-gong-ji.html</link><description>近来，一种特殊的”攻击“频繁的出现在我们眼前，或许叫他攻击也不对，本质上这更像是由于dev为了自己的私利导致的套利行为。</description><guid isPermaLink="true">https://bznsix.github.io/post/yi-zhong-te-shu-ji-zhi-de-tu-gou-dai-lai-de-san-ming-zhi-gong-ji.html</guid><pubDate>Tue, 24 Sep 2024 03:51:05 +0000</pubDate></item><item><title>记录下配置ONLYPWNER CTF环境的步骤</title><link>https://bznsix.github.io/post/ji-lu-xia-pei-zhi-ONLYPWNER%20CTF-huan-jing-de-bu-zou.html</link><description>蛮经典的一个CTF，地址[https://onlypwner.xyz/challenges/5](url)&#13;
+这里选择采用Foundry来完成解题，一般来讲，每一关你点击Launch都会生成一个给你的节点，你要攻击的合约地址，以及一个你答题用的私钥地址，如图所示：&#13;
+![image](https://github.com/user-attachments/assets/6853dc5a-ebf2-4fba-9d14-d09b03ac5c3b)&#13;
+这些记下来，我们后面会用到&#13;
+接着我们使用github上一个答题模板来配置，名字叫onlypwner-foundry，可以自行搜索下&#13;
+下载完成后，记得使用git submodule update --progress --init来更新目录lib下的一些foundry脚本合约&#13;
+然后新建.env文件，里面用上了我们上面截图的东西&#13;
+![image](https://github.com/user-attachments/assets/ecce12ab-2b2a-4328-b43b-f844ba38e651)&#13;
+之后再在challenges文件夹下，你对应的关卡里面的script文件夹下创建Solve.sol解题脚本，以第一关为例（这个很简单，就是存粹提款）&#13;
+![image](https://github.com/user-attachments/assets/16ba8954-e363-43a9-8525-2e8f65e15361)&#13;
+这里面会用vm.envxxx去读取我们配置的环境变量，之后我们使用startBroadcast将操纵广播上链。</description><guid isPermaLink="true">https://bznsix.github.io/post/ji-lu-xia-pei-zhi-ONLYPWNER%20CTF-huan-jing-de-bu-zou.html</guid><pubDate>Wed, 28 Aug 2024 05:58:23 +0000</pubDate></item><item><title>rg进行多行筛选的方法</title><link>https://bznsix.github.io/post/rg-jin-xing-duo-xing-shai-xuan-de-fang-fa.html</link><description>有时候我们不希望仅搜索一个条件，我们希望多个条件结合起来搜索，那么我们就可以巧妙的利用-A选项追加显示，再结合一个rg来进行多重搜索，如下所示：&#13;
+`rg 'fromBalance = _balances\[from\];' -A 5  | rg 'toBalance = _balances\[to\];'`&#13;
+-A代表的显示搜查结果及其下五行，之后传给另一个rg。</description><guid isPermaLink="true">https://bznsix.github.io/post/rg-jin-xing-duo-xing-shai-xuan-de-fang-fa.html</guid><pubDate>Fri, 09 Aug 2024 06:23:47 +0000</pubDate></item><item><title>记录下mysql登录的方法</title><link>https://bznsix.github.io/post/ji-lu-xia-mysql-deng-lu-de-fang-fa.html</link><description>Docker的mysql&#13;
+&#13;
+1. docker exec -it 9b /bin/bash&#13;
+2. mysql -u root -p  密码123456&#13;
+3. USE CONTRACT;  选择数据库&#13;
+4. SHOW TABLES;  选择表项&#13;
+&#13;
+对表进行去重的方法：&#13;
+-- 1. 创建临时表以存储每个 address 的最小 id&#13;
+CREATE TEMPORARY TABLE temp_table AS&#13;
+SELECT MIN(id) AS id&#13;
+FROM contract_address&#13;
+GROUP BY address;&#13;
+&#13;
+-- 2. 删除重复记录，保留在临时表中的记录&#13;
+DELETE FROM contract_address&#13;
+WHERE id NOT IN (SELECT id FROM temp_table);&#13;
+&#13;
+-- 3. 删除临时表&#13;
+DROP TEMPORARY TABLE temp_table;&#13;
+。</description><guid isPermaLink="true">https://bznsix.github.io/post/ji-lu-xia-mysql-deng-lu-de-fang-fa.html</guid><pubDate>Wed, 07 Aug 2024 07:07:50 +0000</pubDate></item><item><title>打造自己的看番环境</title><link>https://bznsix.github.io/post/da-zao-zi-ji-de-kan-fan-huan-jing.html</link><description>由于当前的B站特色，很多番剧先审后播，时效性有所下降，所以考虑在本地搭建一套自己的看番环境，本次主要使用的工具有qbittorrent和jellyfin。</description><guid isPermaLink="true">https://bznsix.github.io/post/da-zao-zi-ji-de-kan-fan-huan-jing.html</guid><pubDate>Sun, 09 Jun 2024 01:46:08 +0000</pubDate></item><item><title>Awtrix2升级Awtrix3</title><link>https://bznsix.github.io/post/Awtrix2-sheng-ji-Awtrix3.html</link><description>原来就一直有个像素灯，之前是通过上位机和下位机通信控制的，但是上次打开控制网页的时候出现了当前版本已经停止支持的选项，遂上github查看发现从ESP8266重构到了ESP32，不需要上位机控制了。</description><guid isPermaLink="true">https://bznsix.github.io/post/Awtrix2-sheng-ji-Awtrix3.html</guid><pubDate>Sun, 26 May 2024 09:27:59 +0000</pubDate></item><item><title>OpennetworkLinux启用usbwifi的支持</title><link>https://bznsix.github.io/post/OpennetworkLinux-qi-yong-usbwifi-de-zhi-chi.html</link><description>买了个usbwifi CF-812AC,里面芯片型号应该是88x2bu，这个大把驱动安装教程，但是关键的来了。</description><guid isPermaLink="true">https://bznsix.github.io/post/OpennetworkLinux-qi-yong-usbwifi-de-zhi-chi.html</guid><pubDate>Fri, 17 May 2024 08:39:36 +0000</pubDate></item><item><title>OpennetworkLinux编译</title><link>https://bznsix.github.io/post/OpennetworkLinux-bian-yi.html</link><description>最近想升级ONL到10，但是ONL这个项目很久没有人维护了遇到了一些问题，这里记录下解决方案&#13;
+常规的构建流程：&#13;
+```&#13;
+#&gt; git clone https://github.com/opencomputeproject/OpenNetworkLinux&#13;
+#&gt; cd OpenNetworkLinux&#13;
+#&gt; docker/tools/onlbuilder -10             # enter the docker workspace&#13;
+#&gt; apt-cacher-ng&#13;
+#&gt; source setup.env                         # pull in necessary environment variables&#13;
+#&gt; make amd64                          # make onl for $platform (currently amd64)&#13;
+```&#13;
+但是在执行apt-cacher-ng的时候会出现报错，如果在容器中直接apt-install apt-cacher-ng 也会出现dns解析出现错误的问题，而设置这个包缓存器又是编译过程的第一步（没仔细看是否会在后续过程中更改apt源等）所以这就带来了一系列问题，如果不执行这个指令会出现后续的一系列包安装失败，所以这个东西还挺重要，下面直接给出解决方案：&#13;
+&#13;
+1. 直接下载apt-cacher-ng.deb  wget http://ftp.de.debian.org/debian/pool/main/a/apt-cacher-ng/apt-cacher-ng_3.2.1-1_amd64.deb&#13;
+2. sudo dpkg -i 加名字，在弹出来的框是否运行http选择yes&#13;
+3. 修改运行apt-cacher-ng的权限sudo chown foxing:foxing  /run/apt-cacher-ng/&#13;
+4. 手动执行apt-cacher-ng&#13;
+5. 继续正常的步骤&#13;
+&#13;
+注意上述的所有步骤都是在编译ONL的docker中进行的，而不是宿主机&#13;
+&#13;
+没大问题的话是可以正常走完的&#13;
+&#13;
+[参考资料](https://groups.google.com/g/opennetworklinux/c/K3Dtt7uWjyk/m/IBkKDZxEAwAJ?pli=1)&#13;
+&#13;
+&#13;
+&#13;
+&#13;
+。</description><guid isPermaLink="true">https://bznsix.github.io/post/OpennetworkLinux-bian-yi.html</guid><pubDate>Thu, 16 May 2024 06:12:23 +0000</pubDate></item><item><title>MosDns分流和防泄露设置</title><link>https://bznsix.github.io/post/MosDns-fen-liu-he-fang-xie-lu-she-zhi.html</link><description>mosdns是一个不错的Dns转发插件，可以很方便的配置转发DNS查询的规则。</description><guid isPermaLink="true">https://bznsix.github.io/post/MosDns-fen-liu-he-fang-xie-lu-she-zhi.html</guid><pubDate>Wed, 08 May 2024 08:16:14 +0000</pubDate></item><item><title>supervisor介绍</title><link>https://bznsix.github.io/post/supervisor-jie-shao.html</link><description>supervisor是一个用于控制程序后台启动的脚本，拿python写的挺亲切的。</description><guid isPermaLink="true">https://bznsix.github.io/post/supervisor-jie-shao.html</guid><pubDate>Mon, 06 May 2024 02:59:34 +0000</pubDate></item><item><title>1inch的unoswap简单介绍</title><link>https://bznsix.github.io/post/1inch-de-unoswap-jian-dan-jie-shao.html</link><description>昨天一个攻击引起了我的注意，交易[TX](https://app.blocksec.com/explorer/tx/bsc/0x49ca5e188c538b4f2efb45552f13309cc0dd1f3592eee54decfc9da54620c2ec)&#13;
+,本质原因是未经认证的输入，可以导致用户的输入calldata被合约执行，这很常见了。</description><guid isPermaLink="true">https://bznsix.github.io/post/1inch-de-unoswap-jian-dan-jie-shao.html</guid><pubDate>Thu, 25 Apr 2024 06:17:55 +0000</pubDate></item><item><title>在区块链上使用确定的gas price和validitor进行交易</title><link>https://bznsix.github.io/post/zai-qu-kuai-lian-shang-shi-yong-que-ding-de-gas%20price-he-validitor-jin-xing-jiao-yi.html</link><description>为什么要提到这点呢，因为区块链上如果进了公共的pool的话你的交易就很容易被夹，特别是你这个交易还能产生利润的话，所以我们希望交易具有确定性。</description><guid isPermaLink="true">https://bznsix.github.io/post/zai-qu-kuai-lian-shang-shi-yong-que-ding-de-gas%20price-he-validitor-jin-xing-jiao-yi.html</guid><pubDate>Fri, 12 Apr 2024 08:03:54 +0000</pubDate></item><item><title>Solidity rawdata的简单介绍</title><link>https://bznsix.github.io/post/Solidity%20rawdata-de-jian-dan-jie-shao.html</link><description># Solidity rawdata的介绍&#13;
+&#13;
+在Solidity中，函数的调用其实都是通过rawdata来实现的，在与合约交互的过程中，传入一串inputdata，在这个inputdata中就包含了所需要的一切信息，包过需要调用的函数名字，携带进入的参数等。</description><guid isPermaLink="true">https://bznsix.github.io/post/Solidity%20rawdata-de-jian-dan-jie-shao.html</guid><pubDate>Thu, 11 Apr 2024 08:51:53 +0000</pubDate></item><item><title>Block Poc Test</title><link>https://bznsix.github.io/post/Block%20Poc%20Test.html</link><description>新搭建了个博客，感觉挺不错的，以后可能会在这写些复现POC的时候学到的知识。</description><guid isPermaLink="true">https://bznsix.github.io/post/Block%20Poc%20Test.html</guid><pubDate>Fri, 29 Mar 2024 03:17:21 +0000</pubDate></item></channel></rss>
