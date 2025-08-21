@@ -17,7 +17,7 @@
 <meta property="og:url" content="https://bznsix.github.io/post/Approve-shou-quan-cha-xun.html">
 <meta property="og:image" content="https://img2.imgtp.com/2024/04/11/AhM7uVjT.png">
 <title>Approve授权查询</title>
-<link href="//unpkg.com/@wooorm/starry-night@2.1.1/style/both.css" rel="stylesheet" />
+
 
 
 </head>
@@ -95,11 +95,12 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/5366d258-ea53-4205-bd72-978fda80ce0f"><img src="https://github.com/user-attachments/assets/5366d258-ea53-4205-bd72-978fda80ce0f" alt="image" style="max-width: 100%;"></a></p>
 <p>0xb69a就是我们上面攻击的受害者</p>
 <p>给出查询代码</p>
-<div class="highlight highlight-source-sql"><pre class="notranslate"><span class="pl-k">SELECT</span> block_time, tx_from, tx_to, data
-<span class="pl-k">FROM</span> <span class="pl-c1">bnb</span>.<span class="pl-c1">logs</span>
-<span class="pl-k">WHERE</span> topic0 <span class="pl-k">=</span> 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925
-<span class="pl-k">AND</span> topic2 <span class="pl-k">=</span> 0x000000000000000000000000068ba5d0540e27b39c71a00a1c0c1e669d62dc10
-<span class="pl-k">LIMIT</span> <span class="pl-c1">100</span>;</pre></div>
+<pre lang="SQL" class="notranslate"><code class="notranslate">SELECT block_time, tx_from, tx_to, data
+FROM bnb.logs
+WHERE topic0 = 0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925
+AND topic2 = 0x000000000000000000000000068ba5d0540e27b39c71a00a1c0c1e669d62dc10
+LIMIT 100;
+</code></pre>
 <p>补充一个冷知识：合约的字节码中会有函数的signature,所以我们可以查找函数的4字节slector code:</p>
 <pre class="notranslate"><code class="notranslate">SELECT 
   block_time, 
